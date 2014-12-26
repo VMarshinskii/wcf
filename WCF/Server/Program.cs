@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,8 +11,13 @@ namespace Server
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Run server");
-            string s = Console.ReadLine();
+            ServiceHost serviceHos = new ServiceHost(typeof(Service1));
+            serviceHos.Open();
+            Console.WriteLine("Service is running...");
+            Console.WriteLine("Press any key to stop");
+            Console.ReadKey();
+            serviceHos.Close();
+            Console.WriteLine("Service was stopped");
         }
     }
 }
